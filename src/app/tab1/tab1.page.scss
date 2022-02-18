@@ -1,0 +1,80 @@
+// Card Header
+#header {
+    position: relative;
+    --background: #ffc409;
+    box-shadow: none;
+    padding-bottom: 50px;
+    border-radius: 0;
+
+    ion-item {
+        --background: transparent;        
+
+        ion-label {
+            padding-left: 15px;
+            text-transform: uppercase;
+            color:#5f5339;
+            font-weight: 600;
+        }
+    }
+
+    ion-card-content {
+        h1 {
+            color: #5f5339;
+            text-align: center;
+        }
+    }
+
+    .shadow {
+        position: absolute;
+        background-color: #fff;
+        width: 100%;
+        height: 20px;
+        border-radius: 25px 25px 0 0;
+        bottom: 0;
+        z-index: 99;
+    }
+}
+
+// Category Menu
+.cat-item {
+    text-align: center;
+    // background-color: rgba(238, 227, 204, 0.5);
+    // border-radius: 20px;
+    // padding: 15px;
+
+    img {
+        width: 65%;
+        border-radius: 100%;
+        background-color: #eedaae;
+        padding: 15px;
+    }
+
+    p {
+        padding: 0;
+        margin: 5px 0;
+        text-transform: uppercase;
+        color: #8a7120;
+        font-size: 14px;
+    }
+
+}
+
+// Menu Favorit
+#menu-fav {
+    ion-list-header {
+        ion-label {
+            color:#8a7120;
+            font-size: 16px;
+        }
+
+        ion-button {
+            color: #857d64;
+        }
+    }
+
+    ion-item {
+        .price {
+            color: #7a2a12;
+        }
+    }
+}
