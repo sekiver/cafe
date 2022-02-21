@@ -1,0 +1,24 @@
+// ion-toolbar {
+//     --background: #000;
+//     --color: #fff;
+// }
+
+// List
+ion-list {
+    ion-list-header {
+        ion-label {
+            color:#8a7120;
+            font-size: 16px;
+        }
+
+        ion-button {
+            color: #857d64;
+        }
+    }
+
+    ion-item {
+        .price {
+            color: #7a2a12;
+        }
+    }
+}

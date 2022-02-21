@@ -1,11 +1,30 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="warning">
     <ion-title>
-      Menu
+      MENU
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
+  <!-- Searchbar -->
+  <ion-searchbar placeholder="Filter Pizza" inputmode="decimal" type="decimal" (ionChange)="onSearchChange($event)" [debounce]="250" showCancelButton="never" class="ion-no-padding"></ion-searchbar>
+  <!--  End Searchbar -->
+  <!-- List Menu -->
+  <ion-list>
+    <ion-list-header>
+      <ion-label>CHOOSE YOUR MENU</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let i of [1,2,3,4,5,6,8,6,5]" lines="none">
+      <ion-thumbnail slot="start">
+        <img src="assets/images/menu-nasgor.jpeg" />
+      </ion-thumbnail>
+      <ion-label>
+        <p>Makanan</p>
+        <h2>Item Avatar</h2>
+        <p class="price">Rp 15.000,-</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <!-- End List Menu -->
 </ion-content>

@@ -1,17 +1,67 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="warning">
     <ion-title>
-      Tab 3
+      PROFILE
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <!-- User info -->
+  <ion-item lines="none">
+    <ion-thumbnail slot="start">
+      <img src="assets/images/avatar.jpg" />
+    </ion-thumbnail>
+    <ion-label>
+      <h2>Ardi Yoto</h2>
+      <p>ardiyoto@gmail.com</p>
+      <small>Member : MB97597</small>
+    </ion-label>
+    <ion-chip color="warning" mode="ios" outline="false">
+      Edit
+      <ion-icon name="settings"></ion-icon>
+    </ion-chip>
+  </ion-item>
+  <!-- End User Info -->
+  <!-- List Profile Detail -->
+  <ion-list>
+    <ion-list-header>
+      <ion-label>PROFILE</ion-label>
+    </ion-list-header>
+    <ion-item class="ion-margin-horizontal ion-no-padding">
+      <ion-label position="stacked">Nama</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item class="ion-margin-horizontal ion-no-padding">
+      <ion-label position="stacked">Alamat</ion-label>
+      <ion-textarea></ion-textarea>
+    </ion-item>
+    <ion-item class="ion-margin-horizontal ion-no-padding">
+      <ion-label position="stacked">Kota</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item class="ion-margin-horizontal ion-no-padding">
+      <ion-label position="stacked">Telepon</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-list>
+      <ion-radio-group name="auto" value="1">
+        <ion-list-header>
+          <ion-label>Jenis Kelamin</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label>Laki-Laki</ion-label>
+          <ion-radio value="1"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Perempuan</ion-label>
+          <ion-radio value="2"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <ion-button class="ion-margin-horizontal" (click)="onClick()" expand="full" fill="solid" color="warning">
+      UPDATE
+    </ion-button>
+  </ion-list>
+  <!-- End List Profile Detail -->
 </ion-content>
