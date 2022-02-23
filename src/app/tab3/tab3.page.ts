@@ -7,6 +7,19 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  profile: any = []
+
+  constructor() {
+    this.profile.nama = "Agus Saputro"
+    this.profile.alamat = "Jalan Thamrin 35 A"
+    this.profile.kota = "Kota Madiun"
+    this.profile.telp = "0867465873"
+    this.profile.jk = 2
+    this.profile.email = "agus@gmail.com"
+  }
+
+  becomeMember() {
+    console.log(this.profile)
+  }
 
 }

@@ -7,6 +7,21 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  fav: any = 0;
+  heart: any = "heart-outline"
+
+  constructor() {
+
+  }
+
+  setFav() {
+    if (this.fav == 0) {
+      this.heart = "heart"
+      this.fav = 1
+    } else {
+      this.heart = "heart-outline"
+      this.fav = 0
+    }
+  }
 
 }

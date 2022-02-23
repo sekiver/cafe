@@ -30,22 +30,22 @@
     </ion-list-header>
     <ion-item class="ion-margin-horizontal ion-no-padding">
       <ion-label position="stacked">Nama</ion-label>
-      <ion-input></ion-input>
+      <ion-input [(ngModel)]="profile.nama"></ion-input>
     </ion-item>
     <ion-item class="ion-margin-horizontal ion-no-padding">
       <ion-label position="stacked">Alamat</ion-label>
-      <ion-textarea></ion-textarea>
+      <ion-textarea [(ngModel)]="profile.alamat"></ion-textarea>
     </ion-item>
     <ion-item class="ion-margin-horizontal ion-no-padding">
       <ion-label position="stacked">Kota</ion-label>
-      <ion-input></ion-input>
+      <ion-input [(ngModel)]="profile.kota"></ion-input>
     </ion-item>
     <ion-item class="ion-margin-horizontal ion-no-padding">
       <ion-label position="stacked">Telepon</ion-label>
-      <ion-input></ion-input>
+      <ion-input [(ngModel)]="profile.telp"></ion-input>
     </ion-item>
     <ion-list>
-      <ion-radio-group name="auto" value="1">
+      <ion-radio-group name="auto" value="{{ profile.jk }}">
         <ion-list-header>
           <ion-label>Jenis Kelamin</ion-label>
         </ion-list-header>
@@ -59,7 +59,7 @@
         </ion-item>
       </ion-radio-group>
     </ion-list>
-    <ion-button class="ion-margin-horizontal" (click)="onClick()" expand="full" fill="solid" color="warning">
+    <ion-button class="ion-margin-horizontal" (click)="becomeMember()" expand="full" fill="solid" color="warning">
       UPDATE
     </ion-button>
   </ion-list>

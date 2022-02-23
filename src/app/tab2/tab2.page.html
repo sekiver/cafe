@@ -8,7 +8,8 @@
 
 <ion-content [fullscreen]="true">
   <!-- Searchbar -->
-  <ion-searchbar placeholder="Filter Pizza" inputmode="decimal" type="decimal" (ionChange)="onSearchChange($event)" [debounce]="250" showCancelButton="never" class="ion-no-padding"></ion-searchbar>
+  <ion-searchbar placeholder="Filter Pizza" inputmode="decimal" type="decimal" (ionChange)="onSearchChange($event)"
+    [debounce]="250" showCancelButton="never" class="ion-no-padding"></ion-searchbar>
   <!--  End Searchbar -->
   <!-- List Menu -->
   <ion-list>
@@ -24,6 +25,7 @@
         <h2>Item Avatar</h2>
         <p class="price">Rp 15.000,-</p>
       </ion-label>
+      <ion-icon slot="end" name="{{ heart }}" (click)="setFav()"></ion-icon>
     </ion-item>
   </ion-list>
   <!-- End List Menu -->
