@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -13,7 +14,9 @@ export class Tab1Page {
   member: any = []
   menus: any = []
 
-  constructor() {
+  constructor(
+    public http: HttpClient
+  ) {
     this.nama = "Joko Santoso"
     this.kd_member = "MB07949"
 
@@ -29,11 +32,10 @@ export class Tab1Page {
   }
 
   getMenu() {
-    this.menus = [
-      { kd_menu: "MN0001", nm_menu: "Nasi Goreng Jawa", harga: 15000, jenis: "Makanan", foto: "assets/images/menu-nasgor.jpeg" },
-      { kd_menu: "MN0002", nm_menu: "Jus Alpukat", harga: 8000, jenis: "Minuman", foto: "assets/images/menu-jus-alpukat.jpg" },
-      { kd_menu: "MN0003", nm_menu: "Kentang Goreng", harga: 15000, jenis: "Snack", foto: "assets/images/menu-kentang.jpg" },
-    ]
+    this.http.get("http://localhost:8000/api/menu_favorite").toPromise()
+      .then(res => {
+        this.menus = res
+      })
   }
 
 }

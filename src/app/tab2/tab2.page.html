@@ -16,14 +16,14 @@
     <ion-list-header>
       <ion-label>CHOOSE YOUR MENU</ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let i of [1,2,3,4,5,6,8,6,5]" lines="none">
+    <ion-item *ngFor="let mn of menus" lines="none">
       <ion-thumbnail slot="start">
-        <img src="assets/images/menu-nasgor.jpeg" />
+        <img src="{{ mn.foto }}" />
       </ion-thumbnail>
       <ion-label>
-        <p>Makanan</p>
-        <h2>Item Avatar</h2>
-        <p class="price">Rp 15.000,-</p>
+        <p>{{ mn.kategori }}</p>
+        <h2>{{ mn.nm_menu }}</h2>
+        <p class="price">Rp {{ mn.harga }} ,-</p>
       </ion-label>
       <ion-icon slot="end" name="{{ heart }}" (click)="setFav()"></ion-icon>
     </ion-item>

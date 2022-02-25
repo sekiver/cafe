@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,11 +8,21 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
+  menus: any;
   fav: any = 0;
   heart: any = "heart-outline"
 
-  constructor() {
+  constructor(
+    public http: HttpClient
+  ) {
+    this.getMenu();
+  }
 
+  getMenu() {
+    this.http.get("http://localhost:8000/api/menu").toPromise()
+      .then(res => {
+        this.menus = res
+      })
   }
 
   setFav() {
