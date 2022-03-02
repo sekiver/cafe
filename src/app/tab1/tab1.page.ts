@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -15,7 +16,8 @@ export class Tab1Page {
   menus: any = []
 
   constructor(
-    public http: HttpClient
+    public http: HttpClient,
+    public nav: NavController
   ) {
     this.nama = "Joko Santoso"
     this.kd_member = "MB07949"
@@ -36,6 +38,16 @@ export class Tab1Page {
       .then(res => {
         this.menus = res
       })
+  }
+
+  goMenu(kat: any) {
+    // Pergi ke Halaman tabs/tab2
+    //this.route.navigateByUrl("tabs/tab2")
+    this.nav.navigateForward(["tabs/tab2", { kategori: kat }])
+  }
+
+  getDetailMenu(mn: any) {
+    this.nav.navigateForward(["single-menu", { menu: JSON.stringify(mn) }])
   }
 
 }

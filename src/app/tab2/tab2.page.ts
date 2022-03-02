@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -8,21 +10,36 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  menus: any;
-  fav: any = 0;
+  menus: any
+  kategori: any
+  fav: any = 0
   heart: any = "heart-outline"
 
   constructor(
-    public http: HttpClient
+    public http: HttpClient,
+    public ActiveRoute: ActivatedRoute,
+    public nav: NavController
   ) {
+
+  }
+
+  ionViewDidEnter() {
+    // Tangkap Nilai Parameter
+    this.kategori = this.ActiveRoute.snapshot.paramMap.get("kategori")
     this.getMenu();
+    console.log(this.kategori);
   }
 
   getMenu() {
-    this.http.get("http://localhost:8000/api/menu").toPromise()
+    let param = this.kategori != null ? this.kategori : "";
+    this.http.get("http://localhost:8000/api/menu/" + param).toPromise()
       .then(res => {
         this.menus = res
       })
+  }
+
+  getDetailMenu(mn: any) {
+    this.nav.navigateForward(["single-menu", { menu: JSON.stringify(mn) }])
   }
 
   setFav() {

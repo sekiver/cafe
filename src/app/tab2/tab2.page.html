@@ -16,7 +16,7 @@
     <ion-list-header>
       <ion-label>CHOOSE YOUR MENU</ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let mn of menus" lines="none">
+    <ion-item class="ion-activatable ripple-parent" *ngFor="let mn of menus" lines="none" (click)="getDetailMenu(mn)">
       <ion-thumbnail slot="start">
         <img src="{{ mn.foto }}" />
       </ion-thumbnail>
@@ -26,6 +26,7 @@
         <p class="price">Rp {{ mn.harga }} ,-</p>
       </ion-label>
       <ion-icon slot="end" name="{{ heart }}" (click)="setFav()"></ion-icon>
+      <ion-ripple-effect type="bounded"></ion-ripple-effect>
     </ion-item>
   </ion-list>
   <!-- End List Menu -->

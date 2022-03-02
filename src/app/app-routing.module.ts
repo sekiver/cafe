@@ -5,7 +5,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'single-menu',
+    loadChildren: () => import('./single-menu/single-menu.module').then(m => m.SingleMenuPageModule)
   }
+
 ];
 @NgModule({
   imports: [
@@ -13,4 +18,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
