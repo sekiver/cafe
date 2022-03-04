@@ -8,24 +8,24 @@
 
 <ion-content [fullscreen]="true">
   <!-- Searchbar -->
-  <ion-searchbar placeholder="Filter Pizza" inputmode="decimal" type="decimal" (ionChange)="onSearchChange($event)"
-    [debounce]="250" showCancelButton="never" class="ion-no-padding"></ion-searchbar>
+  <ion-searchbar placeholder="Search ..." [(ngModel)]="search"
+    [debounce]="250" showCancelButton="never" ></ion-searchbar>
   <!--  End Searchbar -->
   <!-- List Menu -->
   <ion-list>
     <ion-list-header>
       <ion-label>CHOOSE YOUR MENU</ion-label>
     </ion-list-header>
-    <ion-item class="ion-activatable ripple-parent" *ngFor="let mn of menus" lines="none" (click)="getDetailMenu(mn)">
-      <ion-thumbnail slot="start">
+    <ion-item class="ion-activatable ripple-parent" *ngFor="let mn of menus | filter:search" lines="none">
+      <ion-thumbnail slot="start"  (click)="getDetailMenu(mn)">
         <img src="{{ mn.foto }}" />
       </ion-thumbnail>
-      <ion-label>
+      <ion-label  (click)="getDetailMenu(mn)">
         <p>{{ mn.kategori }}</p>
         <h2>{{ mn.nm_menu }}</h2>
-        <p class="price">Rp {{ mn.harga }} ,-</p>
+        <p class="price">Rp {{ mn.harga | number }} ,-</p>
       </ion-label>
-      <ion-icon slot="end" name="{{ heart }}" (click)="setFav()"></ion-icon>
+      <ion-icon slot="end" [name]="mn.fav == 1 ? 'heart' : 'heart-outline'" [color]="mn.fav == 1 ? 'danger' : 'dark'" (click)="setFav(mn)"></ion-icon>
       <ion-ripple-effect type="bounded"></ion-ripple-effect>
     </ion-item>
   </ion-list>

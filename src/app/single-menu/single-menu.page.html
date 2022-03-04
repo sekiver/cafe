@@ -1,22 +1,26 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button text=""></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card class="ion-no-margin">
+  <ion-card class="thumb ion-no-margin">
     <ion-card-content>
       <img src="{{ menus.foto }}" alt="">
+      <ion-chip [color]="menus.stok=='Available' ? 'success' : 'danger'" mode="ios" outline="true">
+        <ion-icon [name]="menus.stok=='Available' ? 'checkmark-circle' : 'close-circle'"></ion-icon>
+        <ion-label>{{ menus.stok }}</ion-label>
+      </ion-chip>
     </ion-card-content>
   </ion-card>
-  <ion-card>
+  <ion-card class="desc">
     <ion-card-content>
-      <h1>{{ menus.nm_menu }}</h1>
-      <h6>{{ menus.kategori }}</h6>
-      <h3>{{ menus.harga }}</h3>
+      <ion-badge color="warning" mode="ios">{{ menus.kategori }}</ion-badge>
+      <h1>{{ menus.nm_menu }}</h1>      
+      <h3>Rp {{ menus.harga | number }} ,-</h3>
       <p>{{ menus.ket }}</p>
     </ion-card-content>
   </ion-card>

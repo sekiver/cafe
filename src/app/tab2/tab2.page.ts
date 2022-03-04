@@ -12,8 +12,7 @@ export class Tab2Page {
 
   menus: any
   kategori: any
-  fav: any = 0
-  heart: any = "heart-outline"
+  search: any
 
   constructor(
     public http: HttpClient,
@@ -42,14 +41,13 @@ export class Tab2Page {
     this.nav.navigateForward(["single-menu", { menu: JSON.stringify(mn) }])
   }
 
-  setFav() {
-    if (this.fav == 0) {
-      this.heart = "heart"
-      this.fav = 1
-    } else {
-      this.heart = "heart-outline"
-      this.fav = 0
-    }
+  setFav(mn:any) {
+    mn.fav = mn.fav == 1 ? 0 : 1;
+    this.http.get("http://localhost:8000/api/favorite/"+mn.id_menu+"/"+mn.fav).toPromise()
+    .then(res=>{
+      //  Ditambahkan notification
+      console.log(res)
+    })
   }
 
 }
