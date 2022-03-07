@@ -2,13 +2,13 @@
   <!-- Header -->
   <ion-card id="header" class="ion-no-margin">
     <ion-card-header>
-      <ion-item lines="none" class="ion-no-padding ion-activatable ripple-parent">
+      <ion-item lines="none" class="ion-no-padding ion-activatable ripple-parent" (click)="goProfile()">
         <ion-avatar slot="end">
-          <img src="assets/images/avatar.jpg" />
+          <img [src]="user.foto ? user.foto : 'assets/images/no-photo.png'" />
         </ion-avatar>
         <ion-label>
-          {{ member.nama }}
-          <p>{{ member.kd_member }}</p>
+          {{ user.name }}
+          <p>{{ user.role }}</p>
         </ion-label>
         <ion-ripple-effect type="unbounded"></ion-ripple-effect>
       </ion-item>

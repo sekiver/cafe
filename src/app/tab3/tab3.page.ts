@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -8,8 +9,11 @@ import { Component } from '@angular/core';
 export class Tab3Page {
 
   profile: any = []
+  user:any = []
 
-  constructor() {
+  constructor(
+    public nav:NavController
+  ) {
     this.profile.nama = "Agus Saputro"
     this.profile.alamat = "Jalan Thamrin 35 A"
     this.profile.kota = "Kota Madiun"
@@ -18,8 +22,21 @@ export class Tab3Page {
     this.profile.email = "agus@gmail.com"
   }
 
+  ionViewDidEnter(){
+    this.getProfile()
+  }
+
+  getProfile() {
+    this.user = JSON.parse(localStorage.getItem("login"))
+  }
+
   becomeMember() {
     console.log(this.profile)
+  }
+
+  logout(){
+    localStorage.clear()
+    this.nav.navigateRoot("/")
   }
 
 }

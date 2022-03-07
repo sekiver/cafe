@@ -10,27 +10,26 @@ import { NavController } from '@ionic/angular';
 
 export class Tab1Page {
 
-  nama: any
-  kd_member: any
-  member: any = []
+  user: any = []
   menus: any = []
 
   constructor(
     public http: HttpClient,
     public nav: NavController
   ) {
-    this.nama = "Joko Santoso"
-    this.kd_member = "MB07949"
-
-
     this.getProfile()
     this.getMenu()
 
+    if(!this.user){ this.nav.navigateRoot("/") }
+  }
+
+  ionViewDidEnter(){
+    this.getProfile()
+    this.getMenu()
   }
 
   getProfile() {
-    this.member.nama = "Agus Saputro"
-    this.member.kd_member = "MB123456"
+    this.user = JSON.parse(localStorage.getItem("login"))
   }
 
   getMenu() {
@@ -48,6 +47,10 @@ export class Tab1Page {
 
   getDetailMenu(mn: any) {
     this.nav.navigateForward(["single-menu", { menu: JSON.stringify(mn) }])
+  }
+
+  goProfile(){
+    this.nav.navigateForward("tabs/tab3")
   }
 
 }

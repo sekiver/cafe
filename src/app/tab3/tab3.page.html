@@ -3,6 +3,9 @@
     <ion-title>
       PROFILE
     </ion-title>
+    <ion-button (click)="logout()" slot="end" fill="clear" color="light">
+      <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -10,12 +13,12 @@
   <!-- User info -->
   <ion-item lines="none">
     <ion-thumbnail slot="start">
-      <img src="assets/images/avatar.jpg" />
+      <img [src]="user.foto ? user.foto : 'assets/images/no-photo.png'" />
     </ion-thumbnail>
     <ion-label>
-      <h2>Ardi Yoto</h2>
-      <p>ardiyoto@gmail.com</p>
-      <small>Member : MB97597</small>
+      <h2>{{ user.name }}</h2>
+      <p>{{ user.email }}</p>
+      <small>{{ user.role }}</small>
     </ion-label>
     <ion-chip color="warning" mode="ios" outline="false">
       Edit
