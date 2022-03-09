@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-tab1',
@@ -11,11 +12,12 @@ import { NavController } from '@ionic/angular';
 export class Tab1Page {
 
   user: any = []
-  menus: any = []
+  menus: any
 
   constructor(
     public http: HttpClient,
-    public nav: NavController
+    public nav: NavController,
+    public gb:GlobalService
   ) {
     this.getProfile()
     this.getMenu()
@@ -32,8 +34,8 @@ export class Tab1Page {
     this.user = JSON.parse(localStorage.getItem("login"))
   }
 
-  getMenu() {
-    this.http.get("http://localhost:8000/api/menu_favorite").toPromise()
+  async getMenu() {
+    await this.http.get(this.gb.API_URL+"menu_favorite").toPromise()
       .then(res => {
         this.menus = res
       })
@@ -54,3 +56,6 @@ export class Tab1Page {
   }
 
 }
+
+
+

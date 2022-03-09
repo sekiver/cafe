@@ -11,8 +11,27 @@
   <ion-searchbar placeholder="Search ..." [(ngModel)]="search"
     [debounce]="250" showCancelButton="never" ></ion-searchbar>
   <!--  End Searchbar -->
+
+  <!-- Skeleton List Menu -->
+  <ion-list *ngIf="!menus">
+    <ion-list-header>
+      <ion-label><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></ion-label>
+    </ion-list-header>
+    <ion-item lines="none" *ngFor="let s of [1,2,3,4,5,6]">
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <p><ion-skeleton-text animated style="width: 30%"></ion-skeleton-text></p>
+        <h2><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></h2>
+        <p class="price"><ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>-</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <!-- End Skeleton List Menu -->
+
   <!-- List Menu -->
-  <ion-list>
+  <ion-list *ngIf="menus">
     <ion-list-header>
       <ion-label>CHOOSE YOUR MENU</ion-label>
     </ion-list-header>

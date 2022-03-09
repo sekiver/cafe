@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-tab2',
@@ -17,7 +18,8 @@ export class Tab2Page {
   constructor(
     public http: HttpClient,
     public ActiveRoute: ActivatedRoute,
-    public nav: NavController
+    public nav: NavController,
+    public gb:GlobalService
   ) {
 
   }
@@ -31,7 +33,7 @@ export class Tab2Page {
 
   getMenu() {
     let param = this.kategori != null ? this.kategori : "";
-    this.http.get("http://localhost:8000/api/menu/" + param).toPromise()
+    this.http.get(this.gb.API_URL+"menu/" + param).toPromise()
       .then(res => {
         this.menus = res
       })
@@ -43,7 +45,7 @@ export class Tab2Page {
 
   setFav(mn:any) {
     mn.fav = mn.fav == 1 ? 0 : 1;
-    this.http.get("http://localhost:8000/api/favorite/"+mn.id_menu+"/"+mn.fav).toPromise()
+    this.http.get(this.gb.API_URL+"favorite/"+mn.id_menu+"/"+mn.fav).toPromise()
     .then(res=>{
       //  Ditambahkan notification
       console.log(res)

@@ -48,8 +48,28 @@
     </ion-row>
   </ion-grid>
   <!-- Icon Category -->
+
+  <!-- List Menu Skelaton -->
+  <ion-list *ngIf="!menus">
+    <ion-list-header>
+      <ion-label><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></ion-label>
+      <ion-button><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></ion-button>
+    </ion-list-header>
+    <ion-item lines="none" *ngFor="let s of [1,2,3,4,5]">
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text animate></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <p><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></p>
+        <h2><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></h2>
+        <p class="price"><ion-skeleton-text animated style="width: 30%"></ion-skeleton-text></p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <!-- End List Menu Skelaton -->
+
   <!-- List Menu Favorite -->
-  <ion-list id="menu-fav">
+  <ion-list id="menu-fav" *ngIf="menus">
     <!-- Header List -->
     <ion-list-header>
       <ion-label>MENU FAVORIT</ion-label>
