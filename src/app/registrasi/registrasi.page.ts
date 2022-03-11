@@ -1,17 +1,17 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { GlobalService } from '../global.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-registrasi',
+  templateUrl: './registrasi.page.html',
+  styleUrls: ['./registrasi.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class RegistrasiPage implements OnInit {
 
-  login:any = {}
-  result:any = {}
+  reg:any={}
+  result:any={}
 
   constructor(
     public http:HttpClient,
@@ -20,22 +20,27 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(localStorage.getItem("login")){ this.nav.navigateRoot("tabs/tab1") }
   }
 
-  async goLogin(){
+  async registrasi(){
+
     // Validasi
-    if(!this.login.email){
+    if(!this.reg.name){
+      this.gb.notif("Name Can't Empty !",'warning')
+      return
+    }
+
+    if(!this.reg.email){
       this.gb.notif("Email Can't Empty !",'warning')
       return
     }
 
-    if(!this.gb.validateEmail(this.login.email)){
+    if(!this.gb.validateEmail(this.reg.email)){
       this.gb.notif("Email Invalid !",'warning')
       return
     }
 
-    if(!this.login.password){
+    if(!this.reg.password){
       this.gb.notif("Password Can't Empty !",'warning')
       return
     }
@@ -47,7 +52,7 @@ export class LoginPage implements OnInit {
     headers.append('Accept', 'application/json')
     headers.append('Content-Type', 'application/json')
 
-    await this.http.post(this.gb.API_URL+"login", JSON.stringify(this.login), headers).toPromise()
+    await this.http.post(this.gb.API_URL+"registrasi", JSON.stringify(this.reg), headers).toPromise()
       .then(res => {
         this.result = res
         if (this.result.error == "0") {
@@ -64,10 +69,6 @@ export class LoginPage implements OnInit {
 
         console.log(this.result)
       })
-  }
-
-  goRegistrasi(){
-    this.nav.navigateForward("registrasi")
   }
 
 }
