@@ -14,12 +14,7 @@ export class Tab3Page {
   constructor(
     public nav:NavController
   ) {
-    this.profile.nama = "Agus Saputro"
-    this.profile.alamat = "Jalan Thamrin 35 A"
-    this.profile.kota = "Kota Madiun"
-    this.profile.telp = "0867465873"
-    this.profile.jk = 2
-    this.profile.email = "agus@gmail.com"
+
   }
 
   ionViewDidEnter(){
@@ -30,8 +25,8 @@ export class Tab3Page {
     this.user = JSON.parse(localStorage.getItem("login"))
   }
 
-  becomeMember() {
-    console.log(this.profile)
+  goTo(url:any){
+    this.nav.navigateForward(url)
   }
 
   logout(){

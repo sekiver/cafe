@@ -52,7 +52,8 @@ export class LoginPage implements OnInit {
         this.result = res
         if (this.result.error == "0") {
           // Jika request tidak ada error atau berhasil
-          localStorage.setItem("login", JSON.stringify(this.result.data))
+          localStorage.setItem("login", JSON.stringify(this.result.data.user))
+          localStorage.setItem("member", JSON.stringify(this.result.data.member))
           this.gb.notif(this.result.mess,'success',1500)
           this.nav.navigateRoot("tabs/tab1")
         } else {
