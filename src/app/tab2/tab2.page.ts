@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { GlobalService } from '../global.service';
+import { LocalstorageService } from "../services/localstorage.service";
 
 @Component({
   selector: 'app-tab2',
@@ -19,7 +20,8 @@ export class Tab2Page {
     public http: HttpClient,
     public ActiveRoute: ActivatedRoute,
     public nav: NavController,
-    public gb:GlobalService
+    public gb:GlobalService,
+    private menuFavorite: LocalstorageService,
   ) {
 
   }
@@ -44,6 +46,7 @@ export class Tab2Page {
     this.http.get(this.gb.API_URL+"menu/" + param).toPromise()
       .then(res => {
         this.menus = res
+        this.initMenuFav();
       })
   }
 
@@ -52,12 +55,34 @@ export class Tab2Page {
   }
 
   setFav(mn:any) {
+    this._setLocalFav(mn);
+  }
+
+  _setHostFav(mn:any) {
     mn.fav = mn.fav == 1 ? 0 : 1;
     this.http.get(this.gb.API_URL+"favorite/"+mn.id_menu+"/"+mn.fav).toPromise()
     .then(res=>{
       //  Ditambahkan notification
       console.log(res)
     })
+  }
+
+  _setLocalFav(mn:any) {
+    this.menuFavorite.favorite(mn?.kd_menu);
+    this.initMenuFav();
+  }
+
+  initMenuFav() {
+    this.menus = this.menus.map(menu => {
+      let index = this.menuFavorite.menuFav.indexOf(menu?.kd_menu)
+      if (index >= 0) {
+        menu['fav'] = 1;
+      } else {
+        menu['fav'] = 0;
+      }
+      return menu;
+    })
+    console.log(this.menus)
   }
 
 }
