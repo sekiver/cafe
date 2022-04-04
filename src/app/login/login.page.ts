@@ -44,6 +44,7 @@ export class LoginPage implements OnInit {
     this.gb.show_loading()
 
     let headers: any = new HttpHeaders()
+    headers.append('Access-Control-Allow-Origin','*')
     headers.append('Accept', 'application/json')
     headers.append('Content-Type', 'application/json')
 
@@ -64,6 +65,8 @@ export class LoginPage implements OnInit {
         this.gb.hide_loading();
 
         console.log(this.result)
+      }).catch(err=>{
+        console.log(err)
       })
   }
 

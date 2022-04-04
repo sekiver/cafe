@@ -27,7 +27,16 @@ export class Tab1Page {
 
   ionViewDidEnter(){
     this.getProfile()
+    this.getMenu()    
+  }
+
+  refresh(event){
+    this.getProfile()
     this.getMenu()
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
   }
 
   getProfile() {

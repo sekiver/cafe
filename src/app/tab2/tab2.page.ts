@@ -31,6 +31,14 @@ export class Tab2Page {
     console.log(this.kategori);
   }
 
+  refresh(event){
+    this.getMenu()
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
+
   getMenu() {
     let param = this.kategori != null ? this.kategori : "";
     this.http.get(this.gb.API_URL+"menu/" + param).toPromise()

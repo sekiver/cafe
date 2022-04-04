@@ -3,9 +3,6 @@
     <ion-title>
       PROFILE
     </ion-title>
-    <ion-button (click)="logout()" slot="end" fill="clear" color="light">
-      <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
-    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -61,6 +58,13 @@
     <ion-item>
       <ion-icon name="shield-checkmark" slot="start"></ion-icon>
       <ion-label>Privacy Policy</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item (click)="logout()">
+      <ion-icon name="log-out-outline" slot="start"></ion-icon>
+      <ion-label>Logout</ion-label>
     </ion-item>
   </ion-list>
 

@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Cafe",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

@@ -7,6 +7,9 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <!-- Searchbar -->
   <ion-searchbar placeholder="Search ..." [(ngModel)]="search"
     [debounce]="250" showCancelButton="never" ></ion-searchbar>
