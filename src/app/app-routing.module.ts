@@ -20,6 +20,14 @@ const routes: Routes = [
   {
     path: 'member',
     loadChildren: () => import('./member/member.module').then( m => m.MemberPageModule)
+  },
+  {
+    path: 'card',
+    loadChildren: () => import('./card/card.module').then( m => m.CardPageModule)
+  },
+  {
+    path: 'transaksi',
+    loadChildren: () => import('./transaksi/transaksi.module').then( m => m.TransaksiPageModule)
   }
 
 

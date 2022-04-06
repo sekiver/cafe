@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { GlobalService } from '../global.service';
+import { GlobalService } from '../services/global.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginPage implements OnInit {
   constructor(
     public http:HttpClient,
     public nav:NavController,
-    public gb:GlobalService
+    public gb: GlobalService,
   ) { }
 
   ngOnInit() {

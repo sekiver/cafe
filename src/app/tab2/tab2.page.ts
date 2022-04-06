@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { GlobalService } from '../global.service';
+import { GlobalService } from '../services/global.service';
 import { LocalstorageService } from "../services/localstorage.service";
 
 @Component({
@@ -58,15 +58,6 @@ export class Tab2Page {
     this._setLocalFav(mn);
   }
 
-  _setHostFav(mn:any) {
-    mn.fav = mn.fav == 1 ? 0 : 1;
-    this.http.get(this.gb.API_URL+"favorite/"+mn.id_menu+"/"+mn.fav).toPromise()
-    .then(res=>{
-      //  Ditambahkan notification
-      console.log(res)
-    })
-  }
-
   _setLocalFav(mn:any) {
     this.menuFavorite.favorite(mn?.kd_menu);
     this.initMenuFav();
@@ -82,7 +73,6 @@ export class Tab2Page {
       }
       return menu;
     })
-    console.log(this.menus)
   }
 
 }

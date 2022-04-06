@@ -1,7 +1,8 @@
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { GlobalService } from '../global.service';
+// import { GlobalService } from '../services/global.service';
+import { GlobalService } from "../services/global.service";
 
 @Component({
   selector: 'app-registrasi',
